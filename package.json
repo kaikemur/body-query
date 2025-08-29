@@ -1,16 +1,34 @@
 {
   "name": "body-query",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon sever.js",
+    "start": "node server.js"
   },
+  "keywords": [
+    "SENAI",
+    "API",
+    "node.js",
+    "Express"
+  ],
   "author": "kaike",
   "license": "(MIT)",
-  "description": "",
+  "description": "projeto de API com filtro Body Query",
   "dependencies": {
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaikemur/body-query.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kaikemur/body-query/issues"
+  },
+  "homepage": "https://github.com/kaikemur/body-query#readme"
 }
