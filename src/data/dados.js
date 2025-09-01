@@ -84,6 +84,49 @@ const pocoes = [
     { id: 4, nome: "Veritaserum", efeito: "Força a dizer a verdade" }
 ];
 
+const stats = [
+     {
+        id: 1,
+        nome: "Harry Potter",
+        casa: "Grifinória",
+        ano: 7,
+        varinha: "Azevinho",
+        materialComun:"pena de fênix",
+    },
+    {
+        id: 2,
+        nome: "Hermione Granger",
+        casa: "Grifinória",
+        ano: 7,
+        varinha: "Videira ",
+        materialComun:"fibra de dragão",
+    },
+    {
+        id: 3,
+        nome: "Ron Weasley",
+        casa: "Grifinória",
+        ano: 7,
+        varinha: "Salgueiro ",
+        materialComun:"pelo de unicórnio",
+    },
+    {
+        id: 4,
+        nome: "Draco Malfoy",
+        casa: "Sonserina",
+        ano: 7,
+        varinha: "Azevinho",
+        materialComun:"pelo de unicórnio",
+    },
+    {
+        id: 5,
+        nome: "Luna Lovegood",
+        casa: "Corvinal",
+        ano: 6,
+        varinha: "Madeira desconhecida ",
+        materialComun:"núcleo não revelado",
+    }
+];
 
 
-export default { bruxos, casas, varinhas, animais, pocoes };
+
+export default { bruxos, casas, varinhas, animais, pocoes , stats};

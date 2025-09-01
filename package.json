@@ -22,7 +22,6 @@
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaikemur/body-query.git"
