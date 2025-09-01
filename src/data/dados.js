@@ -84,4 +84,6 @@ const pocoes = [
     { id: 4, nome: "Veritaserum", efeito: "Força a dizer a verdade" }
 ];
 
+
+
 export default { bruxos, casas, varinhas, animais, pocoes };

@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 
 // Query Parameters bruxo com filtro no Node.js - API de Hogwarts
 app.get('/bruxos', (req, res) => {
-    const { casa, ano, especialidade, nome } = req.query;
+    const { casa, ano, especialidade, nome ,vivo} = req.query;
     let resultado = bruxos;
   
     if (casa) {
@@ -47,6 +47,39 @@ app.get('/bruxos', (req, res) => {
       data: resultado
     });
 });
+
+app.post("/bruxos",  (req,res) =>{
+  const { nome, casa,ano,varinha,mascote,patrono,especialidade,vivo } = req.body;
+
+  if (!nome || !casa) {
+     return res.status(400).json({
+      sucess:false,
+      message :"nome e casa são obrigatorios para um bruxo!",
+    });
+  }
+
+  const novoBruxo ={
+    id: bruxos.length + 1,
+    nome,
+    casa: casa,
+    ano:parseInt(ano),
+    varinha:varinha,
+    mascote,
+    patrono,
+    especialidade:especialidade || "ainda não atribuido!",
+    vivo:vivo
+}
+
+//adicionar na lista
+bruxos.push(novoBruxo);
+
+res.status(201).json({
+  sucess:true,
+  message:"novo bruxo adicionado a hogwarts!",
+  data: novoBruxo,
+  });
+})
+
 
 
 // Iniciar servidor escutando na porta definida
