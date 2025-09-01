@@ -3,7 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import dados from "./src/data/dados.js";
 
-const { bruxos,varinhas,casas,pocoes} = dados;
+const { bruxos,varinhas,casas,pocoes,animais} = dados;
 
 // Criar aplicação com Express e configurar para aceitar JSON
 const app = express();
@@ -81,6 +81,22 @@ app.get('/pocoes', (req, res) => {
   }
   if (efeito) {
     resultado = resultado.filter(b => b.efeito.toLowerCase().includes(efeito.toLowerCase()));
+  }
+  res.status(200).json({
+    total: resultado.length,
+    data: resultado
+  });
+});
+
+app.get('/animais', (req, res) => {
+  const { nome, tipo} = req.query;
+  let resultado = animais;
+
+  if (nome) {
+    resultado = resultado.filter(b => b.nome.toLowerCase().includes(nome.toLowerCase()));
+  }
+  if (tipo) {
+    resultado = resultado.filter(b => b.tipo.toLowerCase().includes(tipo.toLowerCase()));
   }
   res.status(200).json({
     total: resultado.length,
