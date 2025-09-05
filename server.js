@@ -105,20 +105,48 @@ app.get('/animais', (req, res) => {
 });
 
 app.get('/stats', (req, res) => {
-  const { materialComun,casa} = req.query;
-  let resultado = stats;
+ const {casa} = req.query;
+ let bruxosporCasa = bruxos;
 
-  if (casa) {
-      resultado = resultado.filter(b => b.casa.toLowerCase().includes(casa.toLowerCase()));
-    }
-  if (materialComun) {
-      resultado = resultado.filter(m => m.materialComun.toLowerCase().includes(materialComun.toLowerCase()));
-    }
-  res.status(200).json({
-    total: resultado.length,
-    data: resultado
-  });
+ if (casa) {
+  bruxosporCasa = bruxosporCasa.filter((b) => b.casa.toLowerCase().includes(casa.toLowerCase()));
+
+ }
+ const contador={};
+ for (let i = 0; i< varinhas.length; i++){
+  const varinha = varinhas[i];
+  const materiais =varinha.material;
+  
+
+  if (contador[materiais]){
+    contador[materiais]++;
+  }else {""
+    contador[materiais] = 1;
+  }
+ }
+
+ let materialmaisComun= null;
+ let contagemTotal= 0;
+
+ for (const materiais in contador){
+  if (contador[materiais] > contagemTotal) {
+    contagemTotal = contador[materiais];
+    materialmaisComun = materiais;
+  }
+ }
+
+ res.status(200).json({
+  bruxos: {
+    total:bruxosporCasa.length,
+    casa:casa,
+  },
+  varinhas: {
+  materialmaisComun:materialmaisComun,
+  contagemTotal: contagemTotal,
+},
+ });
 });
+
 
 // Rota para listar bruxos com filtro (Query)
 app.post("/bruxos",  (req,res) =>{
@@ -185,4 +213,4 @@ res.status(201).json({
 // Iniciar servidor escutando na porta definida
 app.listen(serverPort, () => {
     console.log(`🚀 Servidor rodando em http://localhost:${serverPort} 🚀`);
-});
+});""
